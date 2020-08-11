@@ -21,11 +21,6 @@ namespace VRWheel.Windows.Layers
         private void Awake()
         {
             Instance = this;
-            for (int i = 0; i < _layerButtons.Length; i++)
-            {
-                DockLayerSlice button = _layerButtons[i];
-                button.SetupSpawnpoints(_spawnpoints);
-            }
         }
 
         public bool TryAdd(SearchArchive searchArchive)

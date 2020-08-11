@@ -10,6 +10,7 @@ namespace ArchiveLoad
         private Texture2D[] _textures;
         public static ArchiveInfo[] Archives { get; private set; }
 
+        [SerializeField] private AppDataProfile _dataInfoProfile = default;
         [SerializeField] private GameObject _blocker = default;
         [SerializeField, Tooltip("Needs to have a component that implements ICollectionLoaderListener!")]
         private GameObject[] _listeners = default;
@@ -37,7 +38,7 @@ namespace ArchiveLoad
         private IEnumerator LoadAll()
         {
             //ArchiveLoader al = new ArchiveLoader(_loadingCanvas);
-            ArchiveLoader al = new ArchiveLoader();
+            ArchiveLoader al = new ArchiveLoader(_dataInfoProfile);
             List<ArchiveInfo> archiveInfos = al.ArchivesInfo;
 
             //_loadingCanvas?.SetFilesToLoad(archiveInfos.Count);

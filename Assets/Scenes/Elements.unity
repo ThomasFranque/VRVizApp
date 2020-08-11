@@ -624,6 +624,11 @@ MonoBehaviour:
   _scaleMod: 1.5
   _type: 1
   _sliceNumber: 1
+  _spawnTransforms:
+  - {fileID: 1082372178}
+  - {fileID: 1464895907}
+  - {fileID: 1969252269}
+  - {fileID: 1284395725}
 --- !u!114 &354183420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1673,6 +1678,11 @@ MonoBehaviour:
   _scaleMod: 1.5
   _type: 1
   _sliceNumber: 2
+  _spawnTransforms:
+  - {fileID: 1082372178}
+  - {fileID: 1464895907}
+  - {fileID: 1969252269}
+  - {fileID: 1284395725}
 --- !u!114 &614022856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3769,6 +3779,11 @@ MonoBehaviour:
   _scaleMod: 1.5
   _type: 1
   _sliceNumber: 4
+  _spawnTransforms:
+  - {fileID: 1082372178}
+  - {fileID: 1464895907}
+  - {fileID: 1969252269}
+  - {fileID: 1284395725}
 --- !u!114 &1482903334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4669,6 +4684,11 @@ MonoBehaviour:
   _scaleMod: 1.5
   _type: 1
   _sliceNumber: 3
+  _spawnTransforms:
+  - {fileID: 1082372178}
+  - {fileID: 1464895907}
+  - {fileID: 1969252269}
+  - {fileID: 1284395725}
 --- !u!114 &1758698801
 MonoBehaviour:
   m_ObjectHideFlags: 0

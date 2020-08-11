@@ -98,6 +98,15 @@ namespace VRWheel.Layer
             }
         }
 
+        public void OpenDetails()
+        {
+            
+        }
+        public void CloseDetails()
+        {
+
+        }
+
         private float _optFadeIntensity;
         private Tween _optFadeTween;
         public void AnimateOptionsFade(float to)

@@ -9,22 +9,24 @@ namespace VRWheel.Individuals
     public class DockLayerSlice : WheelButton
     {
         [SerializeField, Range(1, 4)] private int _sliceNumber = 1;
+        [SerializeField] private Transform[] _spawnTransforms = default;
         public int SliceNumber => _sliceNumber;
         private(Transform pos, LayerImage taken) [] _spawnpoints;
 
         protected override void OnInit()
         {
+            SetupSpawnpoints();
             _type = WheelButtonType.Dock_Layer;
             OnOtherOpen += CheckType;
             OnOpen += EnableAll;
             OnClose += DisableAll;
         }
 
-        public void SetupSpawnpoints(Transform[] spawns)
+        public void SetupSpawnpoints()
         {
-            _spawnpoints = new(Transform pos, LayerImage taken) [spawns.Length];
-            for (int i = 0; i < spawns.Length; i++)
-                _spawnpoints[i] = (spawns[i], null);
+            _spawnpoints = new(Transform pos, LayerImage taken) [_spawnTransforms.Length];
+            for (int i = 0; i < _spawnTransforms.Length; i++)
+                _spawnpoints[i] = (_spawnTransforms[i], null);
         }
 
         public bool TryAddNewImage(LayerImage image, out Transform availableSlot)
