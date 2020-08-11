@@ -2646,6 +2646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a775c4873080c6438f5282d8f38cb1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dataInfoProfile: {fileID: 11400000, guid: b4fd189157877b346876b41474465b8f, type: 2}
   _blocker: {fileID: 768459758}
   _listeners:
   - {fileID: 352120925}
@@ -3031,7 +3032,7 @@ GameObject:
   - component: {fileID: 1216848814}
   - component: {fileID: 1216848813}
   m_Layer: 0
-  m_Name: Player
+  m_Name: User
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

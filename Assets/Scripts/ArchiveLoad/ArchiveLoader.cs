@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using ExcelDataReader;
 using UnityEngine;
 
@@ -17,18 +18,22 @@ namespace ArchiveLoad
         private System.Data.DataSet resultTable;
 
         private float result;
-
-        public List<ArchiveInfo> ArchivesInfo { get; }
+        private AppDataProfile _dataInfo;
+        public List<ArchiveInfo> InfoCollection { get; }
 
         public ArchiveLoader(AppDataProfile dataInfo)
         {
+            _dataInfo = dataInfo;
+
             // Initialize variables
             _dbFilePath = Path.Combine(
                 Environment.GetFolderPath(dataInfo.AppDataLocation),
+                dataInfo.DataFolderName,
                 dataInfo.DatabaseName);
 
             _imgFolderPath = Path.Combine(
                 Environment.GetFolderPath(dataInfo.AppDataLocation),
+                dataInfo.DataFolderName,
                 dataInfo.ImagesFolderName);
 
             _sbsFolderPath = Path.Combine(
@@ -52,11 +57,10 @@ namespace ArchiveLoad
             }
 
             // Load infos
-            ArchivesInfo = new List<ArchiveInfo>();
+            InfoCollection = new List<ArchiveInfo>();
+            InfoCollection = LoadInfoCollection();
 
-            ArchivesInfo = GetArchiveInfoCollection();
-
-            if (ArchivesInfo != null)
+            if (InfoCollection != null)
                 Debug.Log($"Files successfully read.");
             else
             {
@@ -65,9 +69,10 @@ namespace ArchiveLoad
             }
         }
 
-        private List<ArchiveInfo> GetArchiveInfoCollection()
+        private List<ArchiveInfo> LoadInfoCollection()
         {
             List<ArchiveInfo> loadedArchiveInfos = new List<ArchiveInfo>();
+            Dictionary<string, ArchiveImages> imagesCollection = LoadImages();
 
             float id = 0;
             string metadata = null;
@@ -79,9 +84,7 @@ namespace ArchiveLoad
             string theme = null;
             string subject = null;
             string date = null;
-
-            int x = 0;
-            int y = 0;
+            ArchiveImages images;
 
             using(FileStream stream = File.Open(_dbFilePath, FileMode.Open, FileAccess.Read))
             {
@@ -91,15 +94,15 @@ namespace ArchiveLoad
                 }
             }
 
-            DirectoryInfo dir = new DirectoryInfo(_imgFolderPath);
-            FileInfo[] jpgs = dir.GetFiles("*.jpg");
             int i = 0;
-
-            for (y = 3; y < resultTable.Tables[0].Rows.Count; y++)
+            // Rows
+            for (int y = 3; y < resultTable.Tables[0].Rows.Count; y++)
             {
+                // If within limits
                 if (y > 2 && y < 21)
                 {
-                    for (x = 0; x < resultTable.Tables[0].Columns.Count; x++)
+                    // Columns
+                    for (int x = 0; x < resultTable.Tables[0].Columns.Count; x++)
                     {
                         switch (x)
                         {
@@ -217,24 +220,30 @@ namespace ArchiveLoad
                 }
 
                 // Get the images
-                Sprite img = null;
 
-                if (i < jpgs.Length - 1 && jpgs[i] != null)
-                    img = LoadNewSprite(jpgs[i].FullName);
+                if (!imagesCollection.TryGetValue(numberOriginal, out images))
+                {
+                    Debug.LogWarning($"{numberOriginal} does not have images!");
+                }
+
+                //Sprite img = null;
+
+                // if (i < jpgs.Length - 1 && jpgs[i] != null)
+                //     img = LoadSpriteFromFile(jpgs[i]);
 
                 // Finalize archive info creation
                 ArchiveInfo ai =
                     new ArchiveInfo(
                         id,
                         metadata,
-                        img,
                         width,
                         height,
                         startYear,
                         endYear,
                         theme,
                         owner,
-                        physicalDescription);
+                        physicalDescription,
+                        images);
 
                 loadedArchiveInfos.Add(ai);
 
@@ -246,32 +255,84 @@ namespace ArchiveLoad
             return loadedArchiveInfos;
         }
 
-        private Sprite LoadNewSprite(
-            string FilePath,
-            float PixelsPerUnit = 100.0f)
+        private Dictionary<string, ArchiveImages> LoadImages()
         {
-            Texture2D SpriteTexture = LoadTexture(FilePath);
-            Sprite NewSprite = Sprite.Create(
-                SpriteTexture,
+
+            DirectoryInfo mainImageDirInf = new DirectoryInfo(_imgFolderPath);
+            DirectoryInfo sbsImageDirInf = new DirectoryInfo(_sbsFolderPath);
+            FileInfo[] mains = mainImageDirInf.GetFiles("*.jpg");
+            FileInfo[] sbs = sbsImageDirInf.GetFiles("*.jpg");
+
+            Dictionary<string, ArchiveImages> loadedImages =
+                new Dictionary<string, ArchiveImages>(mains.Length);
+
+            for (int i = 0; i < mains.Length; i++)
+            {
+                FileInfo full = mains[i];
+                FileInfo left;
+                FileInfo right;
+                ArchiveImages images;
+
+                Sprite fSprite = default;
+                Sprite lSprite = default;
+                Sprite rSprite = default;
+
+                string parsedName = full.Name.Remove(full.Name.Length - _dataInfo.ImageExtension.Length);
+
+                FileInfo[] sbsLinks =
+                    (from file in sbs where file.Name.Contains(parsedName) select file)
+                    .ToArray();
+
+                left = sbsLinks.FirstOrDefault(l => l.Name.EndsWith(_dataInfo.LeftImageExtension));
+                right = sbsLinks.FirstOrDefault(r => r.Name.Contains(_dataInfo.RightImageExtension));
+
+                fSprite = LoadSpriteFromFile(full);
+
+                if (lSprite != null)
+                    lSprite = LoadSpriteFromFile(left);
+                else
+                    Debug.LogWarning($"{full.Name} does not have a Left Side image!");
+
+                if (rSprite != null)
+                    rSprite = LoadSpriteFromFile(right);
+                else
+                    Debug.LogWarning($"{full.Name} does not have a Right Side image!");
+
+                images = new ArchiveImages(fSprite, lSprite, rSprite);
+
+                loadedImages.Add(parsedName, images);
+            }
+
+            return loadedImages;
+
+            // if (i < jpgs.Length - 1 && jpgs[i] != null)
+            //     img = LoadSpriteFromFile(jpgs[i]);
+        }
+
+        private Sprite LoadSpriteFromFile(FileInfo file, float pixelsPerUnit = 100.0f)
+        {
+            Texture2D spriteTexture = LoadTexture(file.FullName);
+            Sprite newSprite = Sprite.Create(
+                spriteTexture,
                 new Rect(
                     0,
                     0,
-                    SpriteTexture.width,
-                    SpriteTexture.height),
+                    spriteTexture.width,
+                    spriteTexture.height),
                 new Vector2(0, 0),
-                PixelsPerUnit);
+                pixelsPerUnit);
 
-            return NewSprite;
+            return newSprite;
         }
 
-        private Texture2D LoadTexture(string FilePath)
+        private Texture2D LoadTexture(string fullFilePath)
         {
             Texture2D Tex2D;
             byte[] FileData;
 
-            if (File.Exists(FilePath))
+            if (File.Exists(fullFilePath))
             {
-                FileData = File.ReadAllBytes(FilePath);
+                FileData = File.ReadAllBytes(fullFilePath);
                 Tex2D = new Texture2D(2, 2);
                 if (Tex2D.LoadImage(FileData))
                     return Tex2D;

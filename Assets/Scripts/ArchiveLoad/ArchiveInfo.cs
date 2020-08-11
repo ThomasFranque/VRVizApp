@@ -11,28 +11,28 @@ namespace ArchiveLoad
         private string _topic;
         private string _owner;
         private string _physicalDescription;
-        private Sprite _image;
+        private ArchiveImages _images;
 
         public ArchiveInfo(
             float id,
             string metadata,
-            Sprite image,
             float sizeX,
             float sizeY,
             int startYear,
             int endYear,
             string topic,
             string owner,
-            string physicalDescription)
+            string physicalDescription,
+            ArchiveImages images = default)
         {
             _id = id;
             _metadata = metadata;
-            _image = image;
             _size = new float[2] { sizeX, sizeY };
             _year = new int[2] { startYear, endYear };
             _topic = topic;
             _owner = owner;
             _physicalDescription = physicalDescription;
+            _images = images;
         }
 
         public float ImageWidth => _size[0];
@@ -42,9 +42,10 @@ namespace ArchiveLoad
         public string Topic => _topic;
         public string Owner => _owner;
         public string PhysicalDescription => _physicalDescription;
-        public Sprite Image => _image;
+        public Sprite Image => _images.Full;
         public float Id => _id;
         public string Metadata => _metadata;
+        public ArchiveImages Images => _images;
 
         public override string ToString()
         {

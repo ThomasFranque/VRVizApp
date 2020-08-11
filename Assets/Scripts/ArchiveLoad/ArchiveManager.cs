@@ -39,7 +39,7 @@ namespace ArchiveLoad
         {
             //ArchiveLoader al = new ArchiveLoader(_loadingCanvas);
             ArchiveLoader al = new ArchiveLoader(_dataInfoProfile);
-            List<ArchiveInfo> archiveInfos = al.ArchivesInfo;
+            List<ArchiveInfo> archiveInfos = al.InfoCollection;
 
             //_loadingCanvas?.SetFilesToLoad(archiveInfos.Count);
 

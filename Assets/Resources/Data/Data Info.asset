@@ -15,4 +15,5 @@ MonoBehaviour:
   _appDataLocation: 5
   _dataFolderName: VRViz_Data
   _imagesFolderName: ImgStereoCards
+  _sbsFolderName: SBS
   _databaseName: BaseDadosCarlosRelvas_VRViz.xlsx
