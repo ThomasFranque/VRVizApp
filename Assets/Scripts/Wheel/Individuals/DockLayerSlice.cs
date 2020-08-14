@@ -10,6 +10,7 @@ namespace VRWheel.Individuals
     {
         [SerializeField, Range(1, 4)] private int _sliceNumber = 1;
         [SerializeField] private Transform[] _spawnTransforms = default;
+        [SerializeField] private DotPopulator _dotPopulator = default;
         public int SliceNumber => _sliceNumber;
         private(Transform pos, LayerImage taken) [] _spawnpoints;
 
@@ -19,7 +20,9 @@ namespace VRWheel.Individuals
             _type = WheelButtonType.Dock_Layer;
             OnOtherOpen += CheckType;
             OnOpen += EnableAll;
+            OnOpen += _dotPopulator.Open;
             OnClose += DisableAll;
+            OnClose += _dotPopulator.Close;
         }
 
         public void SetupSpawnpoints()
