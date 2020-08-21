@@ -4,6 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using VRWheel.Fullscreen;
 
 namespace VRWheel.Layer
 {
@@ -41,7 +42,7 @@ namespace VRWheel.Layer
         public void Initialize(ArchiveLoad.ArchiveInfo info)
         {
             _attachedInfo = info;
-            _image.sprite = info.Image;
+            _image.sprite = info.Images.Full;
             _collection.SetText(info.Owner);
             _theme.SetText(info.Topic);
 
@@ -98,13 +99,15 @@ namespace VRWheel.Layer
             }
         }
 
-        public void OpenDetails()
+        public void ShowZoomed()
         {
-            
+            FullscreenImageDisplay.DisplayZoomed(_attachedInfo);
+            CloseOptions();
         }
-        public void CloseDetails()
+        public void ShowDual()
         {
-
+            FullscreenImageDisplay.DisplayDual(_attachedInfo);
+            CloseOptions();
         }
 
         private float _optFadeIntensity;

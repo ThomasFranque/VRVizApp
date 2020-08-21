@@ -12,6 +12,8 @@
     "com.unity.timeline": "1.2.12",
     "com.unity.ugui": "1.0.0",
     "com.unity.ui.builder": "0.10.2-preview",
+    "com.unity.xr.management": "3.2.13",
+    "com.unity.xr.oculus": "1.2.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -45,13 +47,13 @@
     "com.unity.modules.xr": "1.0.0"
   },
   "lock": {
-    "com.coffee.ui-effect": {
-      "revision": "HEAD",
-      "hash": "b43e40508b167d143330d8b9eff0d5c9965cdf3c"
-    },
     "com.coffee.softmask-for-ugui": {
       "revision": "HEAD",
       "hash": "03a7b84fa229fb20dbe67f69971cb0f481509acf"
+    },
+    "com.coffee.ui-effect": {
+      "revision": "HEAD",
+      "hash": "b43e40508b167d143330d8b9eff0d5c9965cdf3c"
     }
   }
 }

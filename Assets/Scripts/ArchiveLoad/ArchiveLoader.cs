@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using ExcelDataReader;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ArchiveLoad
 {
@@ -84,7 +85,9 @@ namespace ArchiveLoad
             string theme = null;
             string subject = null;
             string date = null;
-            ArchiveImages images;
+            ArchiveImages images = default;
+
+            ArchiveInfo previous = default;
 
             using(FileStream stream = File.Open(_dbFilePath, FileMode.Open, FileAccess.Read))
             {
@@ -98,99 +101,95 @@ namespace ArchiveLoad
             // Rows
             for (int y = 3; y < resultTable.Tables[0].Rows.Count; y++)
             {
-                // If within limits
-                if (y > 2 && y < 21)
+                // Columns
+                for (int x = 0; x < resultTable.Tables[0].Columns.Count; x++)
                 {
-                    // Columns
-                    for (int x = 0; x < resultTable.Tables[0].Columns.Count; x++)
+                    switch (x)
                     {
-                        switch (x)
-                        {
-                            case 0: // ID [A]
-                                float.TryParse(
-                                    resultTable.Tables[0].Rows[y][x].ToString(),
-                                    NumberStyles.Any,
-                                    CultureInfo.InvariantCulture,
-                                    out result);
+                        case 0: // ID [A]
+                            float.TryParse(
+                                resultTable.Tables[0].Rows[y][x].ToString(),
+                                NumberStyles.Any,
+                                CultureInfo.InvariantCulture,
+                                out result);
 
-                                id = result;
-                                break;
+                            id = result;
+                            break;
 
-                            case 1: // Metadata [B]
-                                if (resultTable.Tables[0].Rows[y][x].ToString() != null)
-                                    metadata = resultTable.Tables[0].Rows[y][x].ToString();
-                                else
-                                    metadata = "";
-                                break;
+                        case 1: // Metadata [B]
+                            if (resultTable.Tables[0].Rows[y][x].ToString() != null)
+                                metadata = resultTable.Tables[0].Rows[y][x].ToString();
+                            else
+                                metadata = "";
+                            break;
 
-                            case 2: // Image Size [C]
-                                if (resultTable.Tables[0].Rows[y][x].ToString() != null)
-                                    imageSize = resultTable.Tables[0].Rows[y][x].ToString();
-                                else
-                                    imageSize = "";
-                                break;
+                        case 2: // Image Size [C]
+                            if (resultTable.Tables[0].Rows[y][x].ToString() != null)
+                                imageSize = resultTable.Tables[0].Rows[y][x].ToString();
+                            else
+                                imageSize = "";
+                            break;
 
-                            case 4: // Physical Description (Eng) [E]
-                                if (resultTable.Tables[0].Rows[y][x].ToString() != null)
-                                    physicalDescription = resultTable.Tables[0].Rows[y][x].ToString();
-                                else
-                                    physicalDescription = "";
-                                break;
+                        case 4: // Physical Description (Eng) [E]
+                            if (resultTable.Tables[0].Rows[y][x].ToString() != null)
+                                physicalDescription = resultTable.Tables[0].Rows[y][x].ToString();
+                            else
+                                physicalDescription = "";
+                            break;
 
-                            case 5: // Number Relvas Catalogue [F]
-                                if (resultTable.Tables[0].Rows[y][x].ToString() != null)
-                                    numberRelvas = resultTable.Tables[0].Rows[y][x].ToString();
-                                else
-                                    numberRelvas = "";
-                                break;
+                        case 5: // Number Relvas Catalogue [F]
+                            if (resultTable.Tables[0].Rows[y][x].ToString() != null)
+                                numberRelvas = resultTable.Tables[0].Rows[y][x].ToString();
+                            else
+                                numberRelvas = "";
+                            break;
 
-                            case 6: // Owner Number [G]
-                                if (resultTable.Tables[0].Rows[y][x].ToString() != null)
-                                    numberOriginal = resultTable.Tables[0].Rows[y][x].ToString();
-                                else
-                                    numberOriginal = "";
-                                break;
+                        case 6: // Owner Number [G]
+                            if (resultTable.Tables[0].Rows[y][x].ToString() != null)
+                                numberOriginal = resultTable.Tables[0].Rows[y][x].ToString();
+                            else
+                                numberOriginal = "";
+                            break;
 
-                            case 7: // Owner [H]
-                                if (resultTable.Tables[0].Rows[y][x].ToString() != null)
-                                    owner = resultTable.Tables[0].Rows[y][x].ToString();
-                                else
-                                    owner = "";
-                                break;
+                        case 7: // Owner [H]
+                            if (resultTable.Tables[0].Rows[y][x].ToString() != null)
+                                owner = resultTable.Tables[0].Rows[y][x].ToString();
+                            else
+                                owner = "";
+                            break;
 
-                            case 9: // Theme (Eng) [J]
-                                if (resultTable.Tables[0].Rows[y][x].ToString() != null)
-                                    theme = resultTable.Tables[0].Rows[y][x].ToString();
-                                else
-                                    theme = "";
-                                break;
+                        case 9: // Theme (Eng) [J]
+                            if (resultTable.Tables[0].Rows[y][x].ToString() != null)
+                                theme = resultTable.Tables[0].Rows[y][x].ToString();
+                            else
+                                theme = "";
+                            break;
 
-                            case 11: // Subject (Eng) [L]
-                                if (resultTable.Tables[0].Rows[y][x].ToString() != null)
-                                    subject = resultTable.Tables[0].Rows[y][x].ToString();
-                                else
-                                    subject = "";
-                                break;
+                        case 11: // Subject (Eng) [L]
+                            if (resultTable.Tables[0].Rows[y][x].ToString() != null)
+                                subject = resultTable.Tables[0].Rows[y][x].ToString();
+                            else
+                                subject = "";
+                            break;
 
-                            case 12: // Date [M]
-                                if (resultTable.Tables[0].Rows[y][x].ToString() != null)
-                                    date = resultTable.Tables[0].Rows[y][x].ToString();
-                                else
-                                    date = "";
-                                break;
-                            case 13: // Inscriptions (Eng) [O]
-                                break;
-                            case 14: // Backside [Verso: P]
-                                break;
-                            case 16: // Series (Eng) [R]
-                                break;
-                            case 18: // Other proof [T]
-                                break;
-                            case 19: // Related [U]
-                                break;
-                            case 21: // Notes (Eng) [W]
-                                break;
-                        }
+                        case 12: // Date [M]
+                            if (resultTable.Tables[0].Rows[y][x].ToString() != null)
+                                date = resultTable.Tables[0].Rows[y][x].ToString();
+                            else
+                                date = "";
+                            break;
+                        case 13: // Inscriptions (Eng) [O]
+                            break;
+                        case 14: // Backside [Verso: P]
+                            break;
+                        case 16: // Series (Eng) [R]
+                            break;
+                        case 18: // Other proof [T]
+                            break;
+                        case 19: // Related [U]
+                            break;
+                        case 21: // Notes (Eng) [W]
+                            break;
                     }
                 }
 
@@ -214,16 +213,26 @@ namespace ArchiveLoad
                 {
                     string[] dates = date.Split('-');
 
-                    startYear = int.Parse(dates[0], CultureInfo.InvariantCulture.NumberFormat);
-
-                    endYear = int.Parse(dates[1], CultureInfo.InvariantCulture.NumberFormat);
+                    if (dates.Length > 0)
+                    {
+                        startYear = int.Parse(dates[0], CultureInfo.InvariantCulture.NumberFormat);
+                        if (dates.Length > 1)
+                            endYear = int.Parse(dates[1], CultureInfo.InvariantCulture.NumberFormat);
+                    }
                 }
 
                 // Get the images
 
-                if (!imagesCollection.TryGetValue(numberOriginal, out images))
+                bool tryOther = true;
+                if (!string.IsNullOrWhiteSpace(numberOriginal))
+                    tryOther = !imagesCollection.TryGetValue(numberOriginal, out images);
+
+                else if (tryOther && !string.IsNullOrWhiteSpace(numberRelvas))
                 {
-                    Debug.LogWarning($"{numberOriginal} does not have images!");
+                    if (!imagesCollection.TryGetValue(numberRelvas, out images))
+                    {
+                        Debug.LogWarning($"{numberRelvas} does not have images!");
+                    }
                 }
 
                 //Sprite img = null;
@@ -243,9 +252,14 @@ namespace ArchiveLoad
                         theme,
                         owner,
                         physicalDescription,
+                        numberOriginal,
+                        numberRelvas,
                         images);
 
-                loadedArchiveInfos.Add(ai);
+                if (!previous.Equals(ai))
+                    loadedArchiveInfos.Add(ai);
+
+                previous = ai;
 
                 i++;
             }
@@ -269,8 +283,8 @@ namespace ArchiveLoad
             for (int i = 0; i < mains.Length; i++)
             {
                 FileInfo full = mains[i];
-                FileInfo left;
-                FileInfo right;
+                FileInfo left = default;
+                FileInfo right = default;
                 ArchiveImages images;
 
                 Sprite fSprite = default;
@@ -288,15 +302,15 @@ namespace ArchiveLoad
 
                 fSprite = LoadSpriteFromFile(full);
 
-                if (lSprite != null)
+                if (left != default)
                     lSprite = LoadSpriteFromFile(left);
-                else
-                    Debug.LogWarning($"{full.Name} does not have a Left Side image!");
+                // else
+                //     Debug.LogWarning($"{full.Name} does not have a Left Side image!");
 
-                if (rSprite != null)
+                if (right != default)
                     rSprite = LoadSpriteFromFile(right);
-                else
-                    Debug.LogWarning($"{full.Name} does not have a Right Side image!");
+                // else
+                //     Debug.LogWarning($"{full.Name} does not have a Right Side image!");
 
                 images = new ArchiveImages(fSprite, lSprite, rSprite);
 
@@ -304,13 +318,11 @@ namespace ArchiveLoad
             }
 
             return loadedImages;
-
-            // if (i < jpgs.Length - 1 && jpgs[i] != null)
-            //     img = LoadSpriteFromFile(jpgs[i]);
         }
 
         private Sprite LoadSpriteFromFile(FileInfo file, float pixelsPerUnit = 100.0f)
         {
+            if (file == default) return default;
             Texture2D spriteTexture = LoadTexture(file.FullName);
             Sprite newSprite = Sprite.Create(
                 spriteTexture,

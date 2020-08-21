@@ -92,11 +92,11 @@ namespace VRWheel.Windows.Search
                     barIndex++;
 
                 ArchiveInfo inf = ArchiveManager.Archives[i];
-                Transform parent = _barsContentHolders[barIndex];
+                Transform parent = _barsContentHolders[barIndex % 3];
                 SearchArchive newArchive;
                 newArchive = Instantiate(_prefab, parent).GetComponent<SearchArchive>();
                 newArchive.Initialize(inf);
-                _animatedArchives[barIndex, i % amountPerBar] = newArchive;
+                _animatedArchives[barIndex % 3, i % amountPerBar] = newArchive;
             }
         }
     }

@@ -38,7 +38,7 @@ public class DotPopulator : MonoBehaviour
             }
             GameObject dot = Instantiate(d, transform);
             dot.name = $"Dot {i}";
-            Debug.Log($"({i % group.constraintCount}, {lines})");
+            //Debug.Log($"({i % group.constraintCount}, {lines})");
             _dotGrid[i % group.constraintCount, lines] = dot;
         }
         Close();

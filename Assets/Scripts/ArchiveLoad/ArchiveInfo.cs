@@ -11,7 +11,10 @@ namespace ArchiveLoad
         private string _topic;
         private string _owner;
         private string _physicalDescription;
+        private string _numberOriginal;
+        private string _numberRelvas;
         private ArchiveImages _images;
+        private bool _hasSBS;
 
         public ArchiveInfo(
             float id,
@@ -23,7 +26,9 @@ namespace ArchiveLoad
             string topic,
             string owner,
             string physicalDescription,
-            ArchiveImages images = default)
+            string numberOriginal,
+            string numberRelvas,
+            ArchiveImages images)
         {
             _id = id;
             _metadata = metadata;
@@ -32,7 +37,10 @@ namespace ArchiveLoad
             _topic = topic;
             _owner = owner;
             _physicalDescription = physicalDescription;
+            _numberOriginal = numberOriginal;
+            _numberRelvas = numberRelvas;
             _images = images;
+            _hasSBS = _images.Right != default || _images.Left != default;
         }
 
         public float ImageWidth => _size[0];
@@ -45,7 +53,11 @@ namespace ArchiveLoad
         public Sprite Image => _images.Full;
         public float Id => _id;
         public string Metadata => _metadata;
+        public string NumberOriginal => _numberOriginal;
+        public string NumberRelvas => _numberRelvas;
         public ArchiveImages Images => _images;
+        public bool HasSbs => _hasSBS;
+
 
         public override string ToString()
         {

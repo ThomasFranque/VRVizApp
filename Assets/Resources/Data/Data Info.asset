@@ -17,3 +17,6 @@ MonoBehaviour:
   _imagesFolderName: ImgStereoCards
   _sbsFolderName: SBS
   _databaseName: BaseDadosCarlosRelvas_VRViz.xlsx
+  _imageExtension: .jpg
+  _leftImageExtension: _l.jpg
+  _rightImageExtension: _r.jpg

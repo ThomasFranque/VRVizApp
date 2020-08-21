@@ -76,8 +76,9 @@ namespace ArchiveLoad
             //SpawnArchive(archiveInfos);
             _blocker.SetActive(false);
 
-            foreach (ArchiveInfo ai in Archives)
-                Debug.Log(ai);
+            // foreach (ArchiveInfo ai in Archives)
+            //     Debug.Log(ai);
+            
             OnCollectionLoaded?.Invoke();
         }
 
