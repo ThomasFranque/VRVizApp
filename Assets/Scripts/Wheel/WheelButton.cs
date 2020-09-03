@@ -8,6 +8,8 @@ namespace VRWheel
     [RequireComponent(typeof(Button), typeof(Image))]
     public abstract class WheelButton : MonoBehaviour
     {
+        private const float INTERACTION_DELAY = 1.0f;
+
         [Header("Animation")]
         [SerializeField] private RectTransform _icon = default;
         [SerializeField] private Transform _openPosition = default;
@@ -21,11 +23,13 @@ namespace VRWheel
         [Header("Wheel Properties")]
         [SerializeField] protected WheelButtonType _type = default;
         private Button _button;
+        private float _interactionDelayCounter;
         public WheelButtonType Type => _type;
         protected Wheel MainWheel { get; private set; }
 
         // Know if it is opened
         public bool Opened { get; private set; }
+        public bool OnDelayCooldown => _interactionDelayCounter <= 0;
 
         // Called on the main wheel's Start()
         public void INIT(Wheel wheel)
@@ -54,7 +58,8 @@ namespace VRWheel
         // Call to open 
         public void Open()
         {
-            if (Opened) return;
+            if (Opened || !OnDelayCooldown) return;
+            _interactionDelayCounter = INTERACTION_DELAY;
             Opened = true;
             DoOpenAnimations();
 
@@ -65,7 +70,8 @@ namespace VRWheel
         // Call to close
         public void Close()
         {
-            if (!Opened) return;
+            if (!Opened || !OnDelayCooldown) return;
+            _interactionDelayCounter = INTERACTION_DELAY;
             Opened = false;
             DoCloseAnimations();
 
@@ -73,6 +79,11 @@ namespace VRWheel
             MainWheel.ButtonClosed(this);
         }
         #endregion
+
+        protected virtual void Update()
+        {
+            _interactionDelayCounter = Mathf.Clamp(_interactionDelayCounter - Time.deltaTime, 0, float.MaxValue);
+        }
 
         #region Animation
         private void DoOpenAnimations()

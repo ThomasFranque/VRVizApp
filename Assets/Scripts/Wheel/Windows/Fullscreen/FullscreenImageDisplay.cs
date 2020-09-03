@@ -42,11 +42,12 @@ namespace VRWheel.Fullscreen
         private void Start()
         {
             gameObject.SetActive(false);
+            ToggleSBSImages(false);
         }
 
         private void Update()
         {
-            if (Input.anyKeyDown)
+            if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetMouseButtonDown(0))
                 Close();
         }
 
@@ -57,6 +58,8 @@ namespace VRWheel.Fullscreen
             _zoomImage.color = transparent;
             _leftDualImage.color = Color.white;
             _rightDualImage.color = Color.white;
+
+            ToggleSBSImages(true);
 
             _leftDualImage.sprite = info.Images.Left;
             _rightDualImage.sprite = info.Images.Right;
@@ -74,8 +77,17 @@ namespace VRWheel.Fullscreen
         public void Close()
         {
             if (!_open) return;
+
+            ToggleSBSImages(false);
+
             _open = false;
             AnimateFade(0);
+        }
+
+        private void ToggleSBSImages(bool value)
+        {
+            _rightDualImage.enabled = value;
+            _leftDualImage.enabled = value;
         }
 
         private float _fadeIntensity;
