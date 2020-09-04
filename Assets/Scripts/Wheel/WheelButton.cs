@@ -8,7 +8,7 @@ namespace VRWheel
     [RequireComponent(typeof(Button), typeof(Image))]
     public abstract class WheelButton : MonoBehaviour
     {
-        private const float INTERACTION_DELAY = 1.0f;
+        private const float INTERACTION_DELAY = .2f;
 
         [Header("Animation")]
         [SerializeField] private RectTransform _icon = default;
