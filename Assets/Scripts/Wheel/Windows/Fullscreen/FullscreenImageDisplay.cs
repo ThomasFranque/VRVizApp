@@ -76,9 +76,8 @@ namespace VRWheel.Fullscreen
         }
         public void Close()
         {
-            if (!_open) return;
-
             ToggleSBSImages(false);
+            if (!_open) return;
 
             _open = false;
             AnimateFade(0);
