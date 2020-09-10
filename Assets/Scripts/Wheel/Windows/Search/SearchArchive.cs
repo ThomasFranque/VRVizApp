@@ -14,21 +14,39 @@ namespace VRWheel.Windows.Search
         [SerializeField] private Button _button = default;
         [SerializeField] private TextMeshProUGUI _idPro = default;
         private ArchiveInfo _attachedInfo;
+        private SearchWindow _window;
         public Transform ImageTransform => _image.transform;
         public ArchiveInfo AttachedInfo => _attachedInfo;
         public bool AddedToLayers { get; private set; }
-
-        public void Initialize(ArchiveInfo info)
+        public SearchWindow Window => _window;
+        public void Initialize(ArchiveInfo info, SearchWindow window)
         {
             _attachedInfo = info;
             _image.sprite = info.Images.Full;
-            _button.onClick.AddListener(AddToLayerIntention);
-            _hasSBSimage.SetActive(info.HasSbs); 
+            _button.onClick.AddListener(Preview);
+            _hasSBSimage.SetActive(info.HasSbs);
+            _window = window;
 
             if (!string.IsNullOrWhiteSpace(info.NumberOriginal))
                 _idPro.SetText(info.NumberOriginal);
             else
                 _idPro.SetText(info.NumberRelvas);
+        }
+
+        public void Preview()
+        {
+            _window.Previewing();
+            SearchPreview prev = Instantiate(SearchWindow.PreviewPrefab, _window.transform).GetComponent<SearchPreview>();
+            prev.Initialize(this, AttachedInfo);
+            // instantiate prefab get component
+            // init
+            // ree
+            // AddToLayerIntention();
+        }
+
+        public void PreviewEnd()
+        {
+            _window.PreviewStop();
         }
 
         public void AddToLayerIntention()
@@ -43,7 +61,7 @@ namespace VRWheel.Windows.Search
             if (LayerWindowManager.Instance.TryAdd(this))
             {
                 AddedToLayers = true;
-                _button.interactable = false;
+                DisableSelection();
             }
         }
 
@@ -51,6 +69,16 @@ namespace VRWheel.Windows.Search
         {
             AddedToLayers = false;
             _button.interactable = true;
+        }
+
+        public void DisableSelection()
+        {
+            _button.interactable = false;
+        }
+
+        public void EnableSelection()
+        {
+            _button.interactable = !AddedToLayers;
         }
     }
 }

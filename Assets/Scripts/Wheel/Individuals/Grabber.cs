@@ -47,11 +47,13 @@ namespace VRWheel
         {
             UpdateAction = FollowPointerTarget;
             _distance = Vector3.Distance(_pointerTarget.position, _dragTarget.position);
+            ConstantLookat.CanLook = true;
         }
 
         public void EndFollow()
         {
             UpdateAction = default;
+            ConstantLookat.CanLook = false;
         }
 
         private void FollowPointerTarget()

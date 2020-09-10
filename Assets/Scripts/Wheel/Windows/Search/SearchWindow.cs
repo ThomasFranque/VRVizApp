@@ -13,13 +13,16 @@ namespace VRWheel.Windows.Search
         [SerializeField] private Transform[] _barsContentHolders = default;
         [SerializeField] private Transform _backgroundPanel = default;
         [SerializeField] private GameObject _prefab = default;
+        public static GameObject PreviewPrefab { get; private set; }
+
+        private List<SearchArchive> _archives;
 
         private SearchArchive[, ] _animatedArchives;
         private readonly float _barsClosedXScale = 0.001f;
 
         protected override void OnAwake()
         {
-
+            PreviewPrefab = Resources.Load<GameObject>("Prefabs/SearchPreview");
         }
 
         protected override void OnOpen()
@@ -81,10 +84,21 @@ namespace VRWheel.Windows.Search
             OnClose();
         }
 
+        public void Previewing()
+        {
+            foreach(SearchArchive a in _archives) a.DisableSelection();
+        }
+
+        public void PreviewStop()
+        {
+            foreach(SearchArchive a in _archives) a.EnableSelection();
+        }
+
         private void Populate()
         {
             int amountPerBar = ArchiveManager.Archives.Length / _barsContentHolders.Length;
             _animatedArchives = new SearchArchive[_barsContentHolders.Length, amountPerBar];
+            _archives = new List<SearchArchive>(ArchiveManager.Archives.Length);
             int barIndex = 0;
             for (int i = 0; i < ArchiveManager.Archives.Length; i++)
             {
@@ -95,8 +109,9 @@ namespace VRWheel.Windows.Search
                 Transform parent = _barsContentHolders[barIndex % 3];
                 SearchArchive newArchive;
                 newArchive = Instantiate(_prefab, parent).GetComponent<SearchArchive>();
-                newArchive.Initialize(inf);
+                newArchive.Initialize(inf, this);
                 _animatedArchives[barIndex % 3, i % amountPerBar] = newArchive;
+                _archives.Add(newArchive);
             }
         }
     }
