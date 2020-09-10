@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using VRWheel.VR;
 
 namespace VRWheel
 {
@@ -13,14 +14,14 @@ namespace VRWheel
         [SerializeField] private float _animationIntensity = 1.5f;
         [SerializeField] private Transform _pointerTarget = default;
         [SerializeField] private Transform _dragTarget = default;
-        private float _distance = 1.5f;
+        private float _distance = 0.8f;
         private Wheel _wheel;
         private Button _button;
         private Vector3 _initialScale;
         public void INIT(Wheel wheel)
         {
             _button = GetComponent<Button>();
-            _button.onClick.AddListener(CloseAll);
+            //_button.onClick.AddListener(CloseAll);
             _wheel = wheel;
             _initialScale = transform.localScale;
         }
@@ -45,6 +46,7 @@ namespace VRWheel
         public void StartFollow()
         {
             UpdateAction = FollowPointerTarget;
+            _distance = Vector3.Distance(_pointerTarget.position, _dragTarget.position);
         }
 
         public void EndFollow()
