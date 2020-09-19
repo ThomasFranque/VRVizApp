@@ -3,17 +3,16 @@ using UnityEngine.UI;
 using TMPro;
 using ArchiveLoad;
 
-namespace Archives_Deprecated
+public class FloatingImageInfo : MonoBehaviour
 {
-    public class ArchiveDisplay : MonoBehaviour
-    {
-        // All the fields we need to display info
-        [SerializeField] private Image _photographImage;
-        [SerializeField] private TMP_Text _ownerPro;
-        [SerializeField] private TMP_Text _typePro;
-        [SerializeField] private TMP_Text _topicPro;
-        [SerializeField] private TMP_Text _physicalDescrPro;
-        [SerializeField] private TMP_Text _yearPro;
+    // All the fields we need to display info
+        [SerializeField] private Image _photographImage = default;
+        [SerializeField] private TMP_Text _ownerPro = default;
+        [SerializeField] private TMP_Text _typePro = default;
+        [SerializeField] private TMP_Text _topicPro = default;
+        [SerializeField] private TMP_Text _physicalDescrPro = default;
+        [SerializeField] private TMP_Text _yearPro = default;
+        [SerializeField] private TMP_Text _idPro = default;
 
         // Stores the feeded info
         public ArchiveInfo _targetinfo;
@@ -56,9 +55,11 @@ namespace Archives_Deprecated
                 _physicalDescrPro.text = info.PhysicalDescription;
             if (_yearPro != null)
                 _yearPro.text = ParseYear();
+            if (_idPro != null)
+                _idPro.text = string.IsNullOrWhiteSpace(info.NumberOriginal) ? info.NumberRelvas : info.NumberOriginal;
 
             // Get the pretty year string from info
-            string ParseYear() => $"{info.StartYear} - {info.EndYear}";
+            string ParseYear() => $"{info.StartYear}\n-\n{info.EndYear}";
         }
 
         // Used to toggle every field to the desired state.
@@ -86,5 +87,4 @@ namespace Archives_Deprecated
             if (_yearPro != null)
                 _yearPro.enabled = active;
         }
-    }
 }

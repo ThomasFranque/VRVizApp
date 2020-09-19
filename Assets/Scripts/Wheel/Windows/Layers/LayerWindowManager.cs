@@ -9,7 +9,6 @@ namespace VRWheel.Windows.Layers
     public class LayerWindowManager : MonoBehaviour
     {
         [SerializeField] private DockLayerSlice[] _layerButtons = default;
-        [SerializeField] private Transform[] _spawnpoints = default;
         [SerializeField] private GameObject _layerImagePrefab = default;
 
         public static LayerWindowManager Instance { get; private set; }
