@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Audio;
 
 namespace VRWheel
 {
@@ -12,10 +13,12 @@ namespace VRWheel
 
         private void Start()
         {
+            AudioManager.Play("Art Of Silence");
             _wheelButtons = GetComponentsInChildren<WheelButton>(false);
             for (int i = 0; i < _wheelButtons.Length; i++)
                 _wheelButtons[i].INIT(this);
             _grabber.INIT(this);
+            
         }
 
         // called by the buttons when opened

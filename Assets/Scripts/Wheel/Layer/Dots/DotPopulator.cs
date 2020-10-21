@@ -24,7 +24,7 @@ public class DotPopulator : MonoBehaviour
             return;
         }
         xSize = group.constraintCount;
-        ySize = _dotAmount / group.constraintCount;
+        ySize = (_dotAmount / group.constraintCount )+ 1;
         _dotGrid = new GameObject[xSize, ySize];
 
         //group.constraintCount;
@@ -83,11 +83,15 @@ public class DotPopulator : MonoBehaviour
 
     private void AnimateNeighbors(float scaleAmount, float speed)
     {
-        foreach (GameObject g in _dotGrid) g.transform.DOScale(Vector3.one * scaleAmount, speed);
+        foreach (GameObject g in _dotGrid) 
+            if (g != default) 
+                g.transform.DOScale(Vector3.one * scaleAmount, speed);
     }
 
     private void KillAllAnimations()
     {
-        foreach (GameObject g in _dotGrid) g.transform.DOKill();
+        foreach (GameObject g in _dotGrid) 
+            if (g != default) 
+                g.transform.DOKill();
     }
 }

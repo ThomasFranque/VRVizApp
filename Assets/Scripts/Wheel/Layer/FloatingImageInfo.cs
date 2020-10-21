@@ -12,6 +12,7 @@ public class FloatingImageInfo : MonoBehaviour
         [SerializeField] private TMP_Text _topicPro = default;
         [SerializeField] private TMP_Text _physicalDescrPro = default;
         [SerializeField] private TMP_Text _yearPro = default;
+        [SerializeField] private TMP_Text _sizePro = default;
         [SerializeField] private TMP_Text _idPro = default;
 
         // Stores the feeded info
@@ -55,6 +56,8 @@ public class FloatingImageInfo : MonoBehaviour
                 _physicalDescrPro.text = info.PhysicalDescription;
             if (_yearPro != null)
                 _yearPro.text = ParseYear();
+            if (_sizePro != null)
+                _sizePro.text = string.Format("{0} x {1} cm", info.ImageWidth, info.ImageHeight);
             if (_idPro != null)
                 _idPro.text = string.IsNullOrWhiteSpace(info.NumberOriginal) ? info.NumberRelvas : info.NumberOriginal;
 
@@ -75,7 +78,7 @@ public class FloatingImageInfo : MonoBehaviour
             if (_ownerPro != null)
                 _ownerPro.enabled = active;
 
-            if (_ownerPro != null)
+            if (_typePro != null)
                 _typePro.enabled = active;
 
             if (_topicPro != null)
@@ -83,6 +86,9 @@ public class FloatingImageInfo : MonoBehaviour
 
             if (_physicalDescrPro != null)
                 _physicalDescrPro.enabled = active;
+
+            if (_sizePro != null)
+                _sizePro.enabled = active;
 
             if (_yearPro != null)
                 _yearPro.enabled = active;

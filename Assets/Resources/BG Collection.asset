@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6041a21353016499abae27dda7279d, type: 3}
+  m_Name: BG Collection
+  m_EditorClassIdentifier: 
+  _skyboxes:
+  - _name: Dawn Beach
+    _type: 2
+    _skyboxMaterial: {fileID: 2100000, guid: c756539312610e54a9983b719b4cf666, type: 2}
+  - _name: Beach
+    _type: 2
+    _skyboxMaterial: {fileID: 2100000, guid: 2f6c10c8ae3b25f4f85625f255608512, type: 2}
+  - _name: Snow
+    _type: 2
+    _skyboxMaterial: {fileID: 2100000, guid: a48d9d51dcda91448ab111b9abcffcf5, type: 2}
+  - _name: Studio
+    _type: 1
+    _skyboxMaterial: {fileID: 2100000, guid: f8e162386caba4f4eb35facdb2fbaa05, type: 2}
+  - _name: Fireplace
+    _type: 1
+    _skyboxMaterial: {fileID: 2100000, guid: 8c4b68aabf9182a4fae9cd11f6fa4282, type: 2}
+  - _name: Black Room
+    _type: 0
+    _skyboxMaterial: {fileID: 2100000, guid: 36786813d90129a45bdde64abe7063f2, type: 2}
+  - _name: Halt Room
+    _type: 0
+    _skyboxMaterial: {fileID: 2100000, guid: 9af22fe8f73352043bdd4f37b42a0552, type: 2}
+  - _name: Cube Room
+    _type: 0
+    _skyboxMaterial: {fileID: 2100000, guid: 83dec972ffb31cb47b11be191138862a, type: 2}
+  - _name: Garage
+    _type: 0
+    _skyboxMaterial: {fileID: 2100000, guid: b4c35a9110b67474b9c58e2f6118f07a, type: 2}
+  - _name: Sea Sky
+    _type: 0
+    _skyboxMaterial: {fileID: 2100000, guid: 5c5d683aeaded694ba678bbcb3c62699, type: 2}
+  - _name: Black
+    _type: 0
+    _skyboxMaterial: {fileID: 2100000, guid: 5f5c4b3f47eef1141ad831ea6d403cd1, type: 2}
