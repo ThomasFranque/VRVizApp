@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using ArchiveLoad;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using VRWheel.Fullscreen;
+using VRWheel.Windows.Layers;
 
 namespace VRWheel.Layer
 {
@@ -25,6 +27,9 @@ namespace VRWheel.Layer
         [SerializeField] float _fadeDuration = .5f;
         private CanvasGroup _mainCanvasGroup;
         private ArchiveLoad.ArchiveInfo _attachedInfo;
+        public ArchiveInfo AttachedInfo { get => _attachedInfo; set => _attachedInfo = value; }
+
+        FloatingImageInfo _openFloatingImageInfo;
 
         private void Awake()
         {
@@ -41,7 +46,7 @@ namespace VRWheel.Layer
 
         public void Initialize(ArchiveLoad.ArchiveInfo info)
         {
-            _attachedInfo = info;
+            AttachedInfo = info;
             _image.sprite = info.Images.Full;
             _collection.SetText(info.Owner);
             _theme.SetText(info.Topic);
@@ -70,8 +75,8 @@ namespace VRWheel.Layer
             _removeButton.gameObject.SetActive(false);
             AnimateMainFade(0);
             transform.DOScale(Vector3.zero, 0.4f)
-            .SetEase(Ease.OutCubic)
-            .OnComplete(() => Destroy(gameObject));
+                .SetEase(Ease.OutCubic)
+                .OnComplete(() => Destroy(gameObject));
             OnRemove?.Invoke(this);
         }
 
@@ -85,6 +90,9 @@ namespace VRWheel.Layer
                 KillRunningAnimationsOn(target);
                 target.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack).SetDelay(0.1f * i);
             }
+
+            if (_openFloatingImageInfo == default)
+                _openFloatingImageInfo = LayerWindowManager.Instance.ShowStationaryFloatingInfo(this);
         }
 
         public void CloseOptions()
@@ -97,16 +105,22 @@ namespace VRWheel.Layer
                 KillRunningAnimationsOn(target);
                 target.DOScale(Vector3.one * 0.01f, 0.5f).SetEase(Ease.InBack);
             }
+            // if (_openFloatingImageInfo != default && !_openFloatingImageInfo.Pinned)
+            if (_openFloatingImageInfo != default)
+            {
+                //_openFloatingImageInfo.Close();
+                _openFloatingImageInfo = default;
+            }
         }
 
         public void ShowZoomed()
         {
-            FullscreenImageDisplay.DisplayZoomed(_attachedInfo);
+            FullscreenImageDisplay.DisplayZoomed(AttachedInfo);
             CloseOptions();
         }
         public void ShowDual()
         {
-            FullscreenImageDisplay.DisplayDual(_attachedInfo);
+            FullscreenImageDisplay.DisplayDual(AttachedInfo);
             CloseOptions();
         }
 
@@ -136,6 +150,7 @@ namespace VRWheel.Layer
 
         private float _mainFadeIntensity;
         private Tween _mainFadeTween;
+
         public void AnimateMainFade(float to)
         {
             if (_mainFadeTween != null)

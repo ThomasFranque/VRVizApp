@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using Audio;
-
+using UnityEngine.Events;
 namespace VRWheel
 {
     public class Wheel : MonoBehaviour
     {
         [SerializeField] private Transform _holder = default;
         [SerializeField] private Grabber _grabber = default;
+        [SerializeField] private UnityEvent OnInitialized = default;
         private WheelButton[] _wheelButtons;
 
         public Transform Holder => _holder;
@@ -18,6 +19,7 @@ namespace VRWheel
             for (int i = 0; i < _wheelButtons.Length; i++)
                 _wheelButtons[i].INIT(this);
             _grabber.INIT(this);
+            OnInitialized.Invoke();
             
         }
 

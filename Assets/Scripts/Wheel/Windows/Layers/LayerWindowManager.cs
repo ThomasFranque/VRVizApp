@@ -43,5 +43,10 @@ namespace VRWheel.Windows.Layers
 
             return false;
         }
+
+        public FloatingImageInfo ShowStationaryFloatingInfo(LayerImage img)
+        {
+            return FloatingInfoManager.Instance.CreateInfo(img.AttachedInfo, img);
+        }
     }
 }
