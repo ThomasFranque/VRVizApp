@@ -82,6 +82,12 @@ namespace VRWheel.Layer
 
         public void OpenOptions()
         {
+            foreach (LayerImage img in GameObject.FindObjectsOfType<LayerImage>())
+            {
+                if (img != this)
+                    img.CloseOptions();
+            }
+
             _removeButton.gameObject.SetActive(false);
             AnimateOptionsFade(1);
             for (int i = 0; i < _optionsButtons.Length; i++)
@@ -108,7 +114,7 @@ namespace VRWheel.Layer
             // if (_openFloatingImageInfo != default && !_openFloatingImageInfo.Pinned)
             if (_openFloatingImageInfo != default)
             {
-                //_openFloatingImageInfo.Close();
+                _openFloatingImageInfo.CloseWithoutNotification();
                 _openFloatingImageInfo = default;
             }
         }

@@ -33,6 +33,7 @@ namespace VRWheel.Windows.Layers
                 if (slice.TryAddNewImage(lImg, out point))
                 {
                     lImg.transform.position = point.position;
+                    lImg.transform.rotation = point.rotation;
                     lImg.Initialize(info);
                     lImg.OnRemove += searchArchive.RemovedFromLayers;
                     slice.Open();

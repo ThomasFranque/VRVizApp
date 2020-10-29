@@ -119,6 +119,11 @@ public class FloatingImageInfo : MonoBehaviour
         _linkedImg?.CloseOptions();
     }
 
+    public void CloseWithoutNotification()
+    {
+        transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.OutCirc).OnComplete(() => Destroy(gameObject));
+    }
+
     public void ShowZoomed()
     {
         FullscreenImageDisplay.DisplayZoomed(_targetinfo);
