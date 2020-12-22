@@ -25,6 +25,7 @@ namespace VRWheel.Fullscreen
 
         [SerializeField] private Image _leftDualImage = default;
         [SerializeField] private Image _rightDualImage = default;
+        [SerializeField] private Transform _positionTarget = default;
 
         private bool _open;
 
@@ -49,6 +50,12 @@ namespace VRWheel.Fullscreen
         {
             if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetMouseButtonDown(0))
                 Close();
+        }
+
+        private void AlignAndMove(Transform subject, Transform referenceTarget)
+        {
+            subject.transform.forward = referenceTarget.transform.forward;
+            subject.transform.position = referenceTarget.transform.position;
         }
 
         private void InstanceDisplayDual(ArchiveInfo info)
@@ -85,6 +92,9 @@ namespace VRWheel.Fullscreen
 
         private void ToggleSBSImages(bool value)
         {
+            AlignAndMove(_rightDualImage.transform, _positionTarget);
+            AlignAndMove(_leftDualImage.transform, _positionTarget);
+
             _rightDualImage.enabled = value;
             _leftDualImage.enabled = value;
         }

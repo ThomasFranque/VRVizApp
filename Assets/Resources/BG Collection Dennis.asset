@@ -10,18 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb6041a21353016499abae27dda7279d, type: 3}
-  m_Name: BG Collection
+  m_Name: BG Collection Dennis
   m_EditorClassIdentifier: 
   _skyboxes:
-  - _name: Dawn Beach
-    _type: 2
-    _skyboxMaterial: {fileID: 2100000, guid: c756539312610e54a9983b719b4cf666, type: 2}
   - _name: Beach
     _type: 2
     _skyboxMaterial: {fileID: 2100000, guid: 2f6c10c8ae3b25f4f85625f255608512, type: 2}
   - _name: Snow
     _type: 2
     _skyboxMaterial: {fileID: 2100000, guid: a48d9d51dcda91448ab111b9abcffcf5, type: 2}
+  - _name: Galaxy Green
+    _type: 2
+    _skyboxMaterial: {fileID: 2100000, guid: 269967744bbed1849a317b8175dc3f43, type: 2}
+  - _name: Galaxy Purple
+    _type: 2
+    _skyboxMaterial: {fileID: 2100000, guid: 246d4b1ad4a63004d8fcf3949494e5b3, type: 2}
+  - _name: Galaxy Pink
+    _type: 2
+    _skyboxMaterial: {fileID: 2100000, guid: 9f69d571a9cb54943b5a80ccd6b19e96, type: 2}
   - _name: Black Room
     _type: 0
     _skyboxMaterial: {fileID: 2100000, guid: 36786813d90129a45bdde64abe7063f2, type: 2}

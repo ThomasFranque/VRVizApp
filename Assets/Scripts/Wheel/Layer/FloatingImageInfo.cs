@@ -145,7 +145,7 @@ public class FloatingImageInfo : MonoBehaviour
         {
             DOTween.Kill(_imageTween.target);
         }
-        _imageTween = _photographImage.transform.parent.DOLocalMoveX(_imageInitialLocalPos.x + 30, .7f).SetEase(Ease.OutCirc);
+        _imageTween = _photographImage.transform.parent.DOLocalMoveY(_imageInitialLocalPos.y + 30, .7f).SetEase(Ease.OutCirc);
         _highlighter.enabled = true;
     }
     public void OnHoverExit()
@@ -156,7 +156,7 @@ public class FloatingImageInfo : MonoBehaviour
         {
             DOTween.Kill(_imageTween.target);
         }
-        _imageTween = _photographImage.transform.parent.DOLocalMoveX(_imageInitialLocalPos.x, .3f).SetEase(Ease.OutCirc);
+        _imageTween = _photographImage.transform.parent.DOLocalMoveY(_imageInitialLocalPos.y, .3f).SetEase(Ease.OutCirc);
         _highlighter.enabled = false;
     }
     public void OnFullClick()
@@ -166,7 +166,7 @@ public class FloatingImageInfo : MonoBehaviour
             _imageOpened = true;
             if (_imageTween != null)
                 DOTween.Kill(_imageTween.target);
-            _imageTween = _photographImage.transform.parent.DOLocalMoveX(_imageInitialLocalPos.x + 80, .5f).SetEase(Ease.OutCirc);
+            _imageTween = _photographImage.transform.parent.DOLocalMoveY(_imageInitialLocalPos.y + 60, .5f).SetEase(Ease.OutCirc);
 
         }
         else
@@ -174,7 +174,7 @@ public class FloatingImageInfo : MonoBehaviour
             _imageOpened = false;
             if (_imageTween != null)
                 DOTween.Kill(_imageTween.target);
-            _imageTween = _photographImage.transform.parent.DOLocalMoveX(_imageInitialLocalPos.x + 1, .5f).SetEase(Ease.OutCirc);
+            _imageTween = _photographImage.transform.parent.DOLocalMoveY(_imageInitialLocalPos.y + 1, .5f).SetEase(Ease.OutCirc);
         }
     }
 }
