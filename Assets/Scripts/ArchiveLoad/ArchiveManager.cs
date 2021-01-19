@@ -15,6 +15,8 @@ namespace ArchiveLoad
         [SerializeField, Tooltip("Needs to have a component that implements ICollectionLoaderListener!")]
         private GameObject[] _listeners = default;
 
+        [SerializeField] private bool _lazyLoad = false;
+
         private void Awake()
         {
             _blocker.SetActive(true);
@@ -78,8 +80,13 @@ namespace ArchiveLoad
 
             // foreach (ArchiveInfo ai in Archives)
             //     Debug.Log(ai);
-            
+
             OnCollectionLoaded?.Invoke();
+        }
+
+        private void LazyLoad()
+        {
+
         }
 
         private void SpawnArchive(List<ArchiveInfo> archiveInfos)

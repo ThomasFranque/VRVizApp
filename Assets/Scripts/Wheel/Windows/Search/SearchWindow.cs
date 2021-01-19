@@ -59,22 +59,35 @@ namespace VRWheel.Windows.Search
         }
         private void AnimateArchives(Vector3 newValue, float delay, Ease ease, float speed, bool enabledState)
         {
-            if (_animatedArchives == default) return;
-            for (int barI = 0; barI < _barsContentHolders.Length; barI++)
-            {
-                int length = _animatedArchives.GetLength(1);
-                for (int i = 0; i < length; i++)
-                {
-                    if (_animatedArchives[barI, i] == default) continue;
-                    Transform target = _animatedArchives[barI, i].ImageTransform;
-                    if (enabledState) target.gameObject.SetActive(enabledState);
+            // if (_animatedArchives == default) return;
+            // for (int barI = 0; barI < _barsContentHolders.Length; barI++)
+            // {
+            //     int length = _animatedArchives.GetLength(1);
+            //     for (int i = 0; i < length; i++)
+            //     {
+            //         if (_animatedArchives[barI, i] == default) continue;
+            //         Transform target = _animatedArchives[barI, i].ImageTransform;
+            //         if (enabledState) target.gameObject.SetActive(enabledState);
 
-                    KillRunningAnimationsOn(target);
-                    target.DOScale(newValue, speed)
+            //         KillRunningAnimationsOn(target);
+            //         target.DOScale(newValue, speed)
+            //             .SetEase(ease)
+            //             .SetDelay(delay * i)
+            //             .OnComplete(() => target.gameObject.SetActive(enabledState));
+            //     }
+            // }
+
+            float del = 0;
+            foreach (SearchArchive a in _archives)
+            {
+                if (enabledState) a.ImageTransform.gameObject.SetActive(enabledState);
+
+                    KillRunningAnimationsOn(a.ImageTransform.transform);
+                    a.ImageTransform.transform.DOScale(newValue, speed)
                         .SetEase(ease)
-                        .SetDelay(delay * i)
-                        .OnComplete(() => target.gameObject.SetActive(enabledState));
-                }
+                        .SetDelay(delay * del)
+                        .OnComplete(() => a.ImageTransform.gameObject.SetActive(enabledState));
+                del+= 0.1f;
             }
         }
 

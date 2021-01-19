@@ -6,6 +6,7 @@ namespace VRWheel.Windows
     public class Window : MonoBehaviour
     {
         [SerializeField] private WheelButton _attachedButton = default;
+        public bool IsOpen{get; private set;}
 
         private void Awake()
         {
@@ -16,11 +17,13 @@ namespace VRWheel.Windows
 
         private void Open()
         {
+            IsOpen = true;
             OnOpen();
         }
 
         private void Close()
         {
+            IsOpen = false;
             OnClose();
         }
 

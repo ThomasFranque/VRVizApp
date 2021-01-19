@@ -22,6 +22,12 @@ namespace ArchiveLoad
         private AppDataProfile _dataInfo;
         public List<ArchiveInfo> InfoCollection { get; }
 
+        // LazyLoad
+        public ArchiveLoader()
+        {
+            List<ArchiveInfo> _archiveInfos = new List<ArchiveInfo>();
+        }
+
         public ArchiveLoader(AppDataProfile dataInfo)
         {
             _dataInfo = dataInfo;

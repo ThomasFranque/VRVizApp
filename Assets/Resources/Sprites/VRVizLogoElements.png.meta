@@ -1,0 +1,443 @@
+fileFormatVersion: 2
+guid: eacadad797ae9ee4a87a20ee2dc335e3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4753963838034190948
+    second: VRVizLogoElements_0
+  - first:
+      213: -6254337113602123115
+    second: BlackIDOTVRVizLogoElements_1
+  - first:
+      213: 4033719142889208014
+    second: VRVizLogoElements_2
+  - first:
+      213: 8764417468250781494
+    second: VRVizLogoElements_3
+  - first:
+      213: 390948660050513261
+    second: VRVizLogoElements_4
+  - first:
+      213: -5880008333780650791
+    second: VRVizLogoElements_5
+  - first:
+      213: 5960051217176421797
+    second: VRVizLogoElements_6
+  - first:
+      213: 1331990418981130260
+    second: VRVizLogoElements_7
+  - first:
+      213: 6295698342704774938
+    second: VRVizLogoElements_8
+  - first:
+      213: -8933508860790204053
+    second: VRVizLogoElements_9
+  - first:
+      213: -8324560403876873176
+    second: VRVizLogoElements_10
+  - first:
+      213: -4798271256150296942
+    second: VRVizLogoElements_11
+  - first:
+      213: 1545193341386271903
+    second: VRVizLogoElements_12
+  - first:
+      213: 2187264372755728133
+    second: VRVizLogoElements_13
+  - first:
+      213: -2850052345675908108
+    second: BlackRDOTVRVizLogoElements_14
+  - first:
+      213: 9023591569519650094
+    second: VRVizLogoElements_15
+  - first:
+      213: 1802049384900004971
+    second: WhiteIDOtVRVizLogoElements_16
+  - first:
+      213: 2777397822763447048
+    second: VRVizLogoElements_17
+  - first:
+      213: 8123577169213919126
+    second: VRVizLogoElements_18
+  - first:
+      213: -1770378357614172663
+    second: VRVizLogoElements_19
+  - first:
+      213: -8508977095035977403
+    second: VRVizLogoElements_20
+  - first:
+      213: 2739984472530473152
+    second: VRVizLogoElements_21
+  - first:
+      213: 4940882005040085320
+    second: VRVizLogoElements_22
+  - first:
+      213: 123944946979870150
+    second: VRVizLogoElements_23
+  - first:
+      213: -6515027327370880236
+    second: VRVizLogoElements_24
+  - first:
+      213: -5627629386417826818
+    second: VRVizLogoElements_25
+  - first:
+      213: -3240152504028697594
+    second: VRVizLogoElements_26
+  - first:
+      213: 7230042340689126278
+    second: VRVizLogoElements_27
+  - first:
+      213: 3088177875876181158
+    second: VRVizLogoElements_28
+  - first:
+      213: -3233432175085254587
+    second: VRVizLogoElements_29
+  - first:
+      213: -3451255794474654835
+    second: VRVizLogoElements_30
+  - first:
+      213: 7229293185158383145
+    second: VRVizLogoElements_31
+  - first:
+      213: -770776768736733776
+    second: WhiteRDotVRVizLogoElements_32
+  - first:
+      213: 8380497529910597542
+    second: VRVizLogoElements_1
+  - first:
+      213: -8488081848285880021
+    second: VRVizLogoElements_2
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: VRVizLogoElements_0
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 1611
+        width: 1352
+        height: 1390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9d5beea317860eb0800000000000000
+      internalID: -4753963838034190948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlackIDOTVRVizLogoElements_1
+      rect:
+        serializedVersion: 2
+        x: 3074
+        y: 2784
+        width: 65
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a143638812439a0800000000000000
+      internalID: -6254337113602123115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlackRDOTVRVizLogoElements_14
+      rect:
+        serializedVersion: 2
+        x: 2525
+        y: 1931
+        width: 65
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fbf7b8ed749278d0800000000000000
+      internalID: -2850052345675908108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VRVizLogoElements_15
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 73
+        width: 1352
+        height: 1390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e25ad6339bc3a3d70800000000000000
+      internalID: 9023591569519650094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteIDOtVRVizLogoElements_16
+      rect:
+        serializedVersion: 2
+        x: 2969
+        y: 1105
+        width: 65
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c0dae2e5a220910800000000000000
+      internalID: 1802049384900004971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteRDotVRVizLogoElements_32
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 165
+        width: 65
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b5d252dc96ad45f0800000000000000
+      internalID: -770776768736733776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VRVizLogoElements_7
+      rect:
+        serializedVersion: 2
+        x: 2185
+        y: 2151
+        width: 950
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41018979a3e2c7210800000000000000
+      internalID: 1331990418981130260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VRVizLogoElements_8
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 389
+        width: 951
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1ffee16940de5750800000000000000
+      internalID: 6295698342704774938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VRVizLogoElements_1
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 2235
+        width: 1614
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a71c570a128d4470800000000000000
+      internalID: 8380497529910597542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VRVizLogoElements_2
+      rect:
+        serializedVersion: 2
+        x: 1755
+        y: 475
+        width: 1602
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b21aa70e786443a80800000000000000
+      internalID: -8488081848285880021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: b72d3165521ec1841b592b87eb6bba2e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

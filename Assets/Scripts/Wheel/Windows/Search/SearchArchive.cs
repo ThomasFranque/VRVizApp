@@ -35,6 +35,7 @@ namespace VRWheel.Windows.Search
 
         public void Preview()
         {
+            if (!_window.IsOpen) return;
             _window.Previewing();
             SearchPreview prev = Instantiate(SearchWindow.PreviewPrefab, _window.transform).GetComponent<SearchPreview>();
             prev.Initialize(this, AttachedInfo);

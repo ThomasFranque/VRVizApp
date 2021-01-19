@@ -54,8 +54,8 @@ namespace VRWheel.Fullscreen
 
         private void AlignAndMove(Transform subject, Transform referenceTarget)
         {
-            subject.transform.forward = referenceTarget.transform.forward;
-            subject.transform.position = referenceTarget.transform.position;
+            // subject.transform.forward = referenceTarget.transform.forward;
+            // subject.transform.position = referenceTarget.transform.position;
         }
 
         private void InstanceDisplayDual(ArchiveInfo info)
