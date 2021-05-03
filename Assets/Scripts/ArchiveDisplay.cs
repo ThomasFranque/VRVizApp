@@ -58,7 +58,7 @@ namespace Archives_Deprecated
                 _yearPro.text = ParseYear();
 
             // Get the pretty year string from info
-            string ParseYear() => $"{info.StartYear} - {info.EndYear}";
+            string ParseYear() => $"{info.Year}";
         }
 
         // Used to toggle every field to the desired state.

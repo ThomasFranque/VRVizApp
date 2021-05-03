@@ -7,9 +7,10 @@ namespace ArchiveLoad
         private float _id;
         private string _metadata;
         private float[] _size;
-        private int[] _year;
+        private string _year;
         private string _topic;
         private string _owner;
+        private string _description;
         private string _physicalDescription;
         private string _numberOriginal;
         private string _numberRelvas;
@@ -21,10 +22,10 @@ namespace ArchiveLoad
             string metadata,
             float sizeX,
             float sizeY,
-            int startYear,
-            int endYear,
+            string year,
             string topic,
             string owner,
+            string description,
             string physicalDescription,
             string numberOriginal,
             string numberRelvas,
@@ -33,9 +34,10 @@ namespace ArchiveLoad
             _id = id;
             _metadata = metadata;
             _size = new float[2] { sizeX, sizeY };
-            _year = new int[2] { startYear, endYear };
+            _year = year;
             _topic = topic;
             _owner = owner;
+            _description = description;
             _physicalDescription = physicalDescription;
             _numberOriginal = numberOriginal;
             _numberRelvas = numberRelvas;
@@ -45,10 +47,10 @@ namespace ArchiveLoad
 
         public float ImageWidth => _size[0];
         public float ImageHeight => _size[1];
-        public int StartYear => _year[0];
-        public int EndYear => _year[1];
+        public string Year => _year;
         public string Topic => _topic;
         public string Owner => _owner;
+        public string Description => _description;
         public string PhysicalDescription => _physicalDescription;
         public Sprite Image => _images.Full;
         public float Id => _id;
@@ -58,7 +60,6 @@ namespace ArchiveLoad
         public ArchiveImages Images => _images;
         public bool HasSbs => _hasSBS;
 
-
         public override string ToString()
         {
             return
@@ -67,7 +68,7 @@ namespace ArchiveLoad
             $"Physical Desc.: {PhysicalDescription}\n" +
             $"Metadata: {Metadata}\n" +
             $"ID: {Id}\n" +
-            $"Year: Start {StartYear}, End {EndYear}\n" +
+            $"Year: {Year}\n" +
             $"Size: {ImageWidth} x {ImageHeight}\n" +
             $"Has Image: {Image != null}";
         }

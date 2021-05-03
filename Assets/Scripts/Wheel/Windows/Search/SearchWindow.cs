@@ -78,6 +78,7 @@ namespace VRWheel.Windows.Search
             // }
 
             float del = 0;
+            if (_archives == default) return;
             foreach (SearchArchive a in _archives)
             {
                 if (enabledState) a.ImageTransform.gameObject.SetActive(enabledState);

@@ -14,11 +14,14 @@ public class FloatingImageInfo : MonoBehaviour
     [SerializeField] private TMP_Text _typePro = default;
     [SerializeField] private TMP_Text _topicPro = default;
     [SerializeField] private TMP_Text _physicalDescrPro = default;
+    [SerializeField] private TMP_Text _descPro = default;
     [SerializeField] private TMP_Text _yearPro = default;
     [SerializeField] private TMP_Text _sizePro = default;
     [SerializeField] private TMP_Text _idPro = default;
     [Header("Other")]
     [SerializeField] private Image _highlighter = default;
+    [SerializeField] private GameObject _3DReady = default;
+    [SerializeField] private Button _3DButton = default;
 
     // Stores the fed info
     public ArchiveInfo _targetinfo;
@@ -66,6 +69,8 @@ public class FloatingImageInfo : MonoBehaviour
             _topicPro.text = info.Topic;
         if (_physicalDescrPro != null)
             _physicalDescrPro.text = info.PhysicalDescription;
+        if (_descPro != default)
+            _descPro.text = info.Description;
         if (_yearPro != null)
             _yearPro.text = ParseYear();
         if (_sizePro != null)
@@ -73,8 +78,11 @@ public class FloatingImageInfo : MonoBehaviour
         if (_idPro != null)
             _idPro.text = string.IsNullOrWhiteSpace(info.NumberOriginal) ? info.NumberRelvas : info.NumberOriginal;
 
+        _3DButton.interactable = info.HasSbs;
+        _3DReady.SetActive(info.HasSbs);
+
         // Get the pretty year string from info
-        string ParseYear() => $"{info.StartYear}\n-\n{info.EndYear}";
+        string ParseYear() => $"{info.Year}";
     }
 
     // Used to toggle every field to the desired state.

@@ -119,7 +119,17 @@ namespace VRWheel.Fullscreen
             {
                 _fadeTween = null;
                 if (to == 0)
+                {
                     _canvasGroup.gameObject.SetActive(false);
+                    _rightDualImage.enabled = false;
+                    _leftDualImage.enabled = false;
+                }
+                if (to == 1)
+                {
+                    _canvasGroup.gameObject.SetActive(true);
+                    _rightDualImage.enabled = true;
+                    _leftDualImage.enabled = true;
+                }
             }
         }
     }

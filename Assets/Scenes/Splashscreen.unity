@@ -2290,12 +2290,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9a5c91abec44243aafbfc5d813ca3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneToLoad: Elements Dennis
+  _sceneToLoad: Elements
   _circle: {fileID: 183175822}
   _vrViz: {fileID: 483436331}
   _subTitle: {fileID: 1417796243}
   _rCircle: {fileID: 695590377}
   _iCircle: {fileID: 1794738039}
+  _loading: {fileID: 516226016}
   _anim: {fileID: 1395987730}
 --- !u!1 &1417796241
 GameObject:

@@ -80,6 +80,7 @@ namespace ArchiveLoad
         {
             List<ArchiveInfo> loadedArchiveInfos = new List<ArchiveInfo>();
             Dictionary<string, ArchiveImages> imagesCollection = LoadImages();
+            //Dictionary<string, ArchiveImages> imagesCollection = new Dictionary<string, ArchiveImages>();
 
             float id = 0;
             string metadata = null;
@@ -211,21 +212,21 @@ namespace ArchiveLoad
                     height = float.Parse(sizes[1], CultureInfo.InvariantCulture.NumberFormat);
                 }
 
-                // Get year
-                int startYear = 0;
-                int endYear = 0;
+                // // Get year
+                // int startYear = 0;
+                // int endYear = 0;
 
-                if (date != null)
-                {
-                    string[] dates = date.Split('-');
+                // if (date != null)
+                // {
+                //     string[] dates = date.Split('-');
 
-                    if (dates.Length > 0)
-                    {
-                        startYear = int.Parse(dates[0], CultureInfo.InvariantCulture.NumberFormat);
-                        if (dates.Length > 1)
-                            endYear = int.Parse(dates[1], CultureInfo.InvariantCulture.NumberFormat);
-                    }
-                }
+                //     if (dates.Length > 0)
+                //     {
+                //         startYear = int.Parse(dates[0], CultureInfo.InvariantCulture.NumberFormat);
+                //         if (dates.Length > 1)
+                //             endYear = int.Parse(dates[1], CultureInfo.InvariantCulture.NumberFormat);
+                //     }
+                // }
 
                 // Get the images
 
@@ -253,10 +254,10 @@ namespace ArchiveLoad
                         metadata,
                         width,
                         height,
-                        startYear,
-                        endYear,
+                        date,
                         theme,
                         owner,
+                        subject,
                         physicalDescription,
                         numberOriginal,
                         numberRelvas,
