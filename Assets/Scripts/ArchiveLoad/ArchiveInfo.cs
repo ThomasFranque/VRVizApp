@@ -16,6 +16,7 @@ namespace ArchiveLoad
         private string _numberRelvas;
         private ArchiveImages _images;
         private bool _hasSBS;
+        private bool _invertSBS;
 
         public ArchiveInfo(
             float id,
@@ -29,6 +30,7 @@ namespace ArchiveLoad
             string physicalDescription,
             string numberOriginal,
             string numberRelvas,
+            bool invertSbs,
             ArchiveImages images)
         {
             _id = id;
@@ -43,6 +45,7 @@ namespace ArchiveLoad
             _numberRelvas = numberRelvas;
             _images = images;
             _hasSBS = _images.Right != default || _images.Left != default;
+            _invertSBS = invertSbs;
         }
 
         public float ImageWidth => _size[0];
@@ -59,6 +62,8 @@ namespace ArchiveLoad
         public string NumberRelvas => _numberRelvas;
         public ArchiveImages Images => _images;
         public bool HasSbs => _hasSBS;
+        public bool InvertSBS => _invertSBS;
+
 
         public override string ToString()
         {

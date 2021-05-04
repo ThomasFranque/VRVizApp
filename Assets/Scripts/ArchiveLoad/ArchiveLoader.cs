@@ -261,6 +261,7 @@ namespace ArchiveLoad
                         physicalDescription,
                         numberOriginal,
                         numberRelvas,
+                        _dataInfo.InvertSBS,
                         images);
 
                 if (!previous.Equals(ai))

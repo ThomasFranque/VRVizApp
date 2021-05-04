@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Splashscreen.unity
     guid: a6fcfc3ee90e4a749843a0d9a8a6ae26
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Elements Dennis.unity
     guid: eddfb0928cecaef4a9918e88713d3b6f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Elements.unity
     guid: 1491b9e6f0a38ee49b12fb9a91438bb2
   m_configObjects:

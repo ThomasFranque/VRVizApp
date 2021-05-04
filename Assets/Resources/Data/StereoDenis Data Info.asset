@@ -20,3 +20,4 @@ MonoBehaviour:
   _imageExtension: .jpg
   _leftImageExtension: _l.jpg
   _rightImageExtension: _r.jpg
+  _invertSBS: 0

@@ -68,8 +68,8 @@ namespace VRWheel.Fullscreen
 
             ToggleSBSImages(true);
 
-            _leftDualImage.sprite = info.Images.Left;
-            _rightDualImage.sprite = info.Images.Right;
+            _leftDualImage.sprite = info.InvertSBS ? info.Images.Right : info.Images.Left;
+            _rightDualImage.sprite = info.InvertSBS ? info.Images.Left : info.Images.Right;
         }
         private void InstanceDisplayZoomed(ArchiveInfo info)
         {

@@ -20,6 +20,9 @@ namespace ArchiveLoad
         [SerializeField] private string _leftImageExtension = "_l.jpg";
         [SerializeField] private string _rightImageExtension = "_r.jpg";
 
+        [Space]
+        [SerializeField] private bool _invertSBS = true;
+        
         public Environment.SpecialFolder AppDataLocation => _appDataLocation;
         public string DataFolderName => _dataFolderName;
         public string ImagesFolderName => _imagesFolderName;
@@ -29,5 +32,7 @@ namespace ArchiveLoad
         public string ImageExtension => _imageExtension;
         public string LeftImageExtension => _leftImageExtension;
         public string RightImageExtension => _rightImageExtension;
+
+        public bool InvertSBS { get => _invertSBS; set => _invertSBS = value; }
     }
 }
